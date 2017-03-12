@@ -22,6 +22,14 @@ public class HttpRequestUtilsTest {
         assertThat(parameters.get("userId"), is("javajigi"));
         assertThat(parameters.get("password"), is("password2"));
     }
+    @Test
+    public void getParameter(){
+        String URL = "/user/create?userId=kbss27&password=1234&name=%EA%B9%80%ED%98%84%EC%9A%B0&email=kbss29%40naver.com";
+        Map<String, String> parameters = HttpRequestUtils.getParameter(URL);
+        assertThat(parameters.get("userId"), is("kbss27"));
+        assertThat(parameters.get("password"), is("1234"));
+        assertThat(parameters.get("email"), is("kbss29%40naver.com"));
+    }
 
     @Test
     public void parseQueryString_null() {

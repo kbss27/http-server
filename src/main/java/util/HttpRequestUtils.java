@@ -17,6 +17,11 @@ public class HttpRequestUtils {
         return parseValues(queryString, "&");
     }
 
+    //Todo: ?이후의 값들만 parseQueryString에 보내야한다
+    public static Map<String, String> getParameter(String URL){
+        String[] token = URL.split("\\?");
+        return parseQueryString(token[1]);
+    }
     /**
      * @param 쿠키
      *            값은 name1=value1; name2=value2 형식임
